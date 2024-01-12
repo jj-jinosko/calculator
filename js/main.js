@@ -17,7 +17,7 @@ let resultBox = document.getElementById("result");
 
 let num1 = 2; //use for testing calculate()
 let num2 = null;
-let operator = "+";
+let operator = "-";
 
 // assign num1 and num2
 const buildCalculation = function (number){
@@ -56,27 +56,27 @@ const displayNumbersEntered = function (){
 
 // -----------------switch--------------------------
 //
-// const operations = a => str => b => {switch(str) {
-//     case "+": return a + b
-//     case "-": return a - b
-//     case "*": return a * b
-//     case "/": return a / b
-//     default: return 'Invalid operation'
-//   }}
+const operations = a => str => b => {switch(str) {
+    case "+": return a + b
+    case "-": return a - b
+    case "*": return a * b
+    case "/": return a / b
+    default: return 'Invalid operation'
+  }}
 // ---------------------------------------
 
-// const calculate = function (){
-//     if(num1 != null && num2 != null && operator != null){ //also, disable enter button until all values entered
-//         let result = operations(num1)("+")(num2);
-//         console.log(result);
-//         return result;
-//     }
-// }
-
 const calculate = function (){
-    let result = num1 + num2;
-    return result;
-};
+    if(num1 != null && num2 != null && operator != null){ //also, disable enter button until all values entered
+        let result = operations(num1)(operator)(num2);
+        console.log(result);
+        return result;
+    }
+}
+
+// const calculate = function (){
+//     let result = num1 + num2;
+//     return result;
+// };
 
 const displayResult = function (){
     resultBox.textContent = calculate();
