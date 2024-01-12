@@ -29,6 +29,13 @@ const buildCalculation = function (number){
     }
 }
 
+const displayNumbersEntered = function (){
+    console.log('displaycalculation');
+    num1Box.textContent = num1;
+    operatorBox.textContent = operator;
+    num2Box.textContent = num2;
+}
+
 // operations (can use reduce on array of operations or switch/case)
 // https://stackoverflow.com/questions/22303738/passing-a-math-operator-as-a-parameter
 //  +, -, x, /
@@ -66,21 +73,20 @@ const buildCalculation = function (number){
 //     }
 // }
 
+const calculate = function (){
+    let result = num1 + num2;
+    return result;
+};
 
-const displayNumbersEntered = function (){
-    console.log('displaycalculation');
-    num1Box.textContent = num1;
-    operatorBox.textContent = operator;
-    num2Box.textContent = num2;
-}
-
-
+const displayResult = function (){
+    resultBox.textContent = calculate();
+};
 
 // seven.addEventListener("click", function(){ alert("Hello World!"); });
 seven.addEventListener("click", function(){ buildCalculation(7); });
 seven.addEventListener("click", displayNumbersEntered);
 
-//seven.addEventListener("click", calculate); //this will move to enter button after tests
-
+// seven.addEventListener("click", calculate); //this will move to enter button after tests
+seven.addEventListener("click", displayResult);
 // =, clear
 
