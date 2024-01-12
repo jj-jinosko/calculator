@@ -1,5 +1,7 @@
-// constants 0-9 (not sure if this is necessary?)
-// const ZERO = 0;
+
+let num1 = null;
+let num2 = null;
+let operator = null;
 
 // assign html components
 const nine = document.getElementById("nine");
@@ -26,20 +28,26 @@ let num2Box = document.getElementById("num2");
 let operatorBox = document.getElementById("operator");
 let resultBox = document.getElementById("result");
 
-
-let num1 = null; //use for testing calculate()
-let num2 = null;
-let operator = null;
-
 // assign num1 and num2
 const selectNumber = function (number){
     if (num1 == null){
         num1 = number;
+    } else if (num1 != null && operator == null){
+        let num1String = num1.toString();
+        console.log("num1toString", num1String);
+        let newNum1String = num1String.concat(number.toString());
+        console.log(newNum1String);
+        num1 = Number(newNum1String);
+        console.log("num1", num1);
     } else if(num2 == null){
         num2 = number;
         // console.log("num2", num2)
     }
 }
+
+// let test = Number("55");
+// console.log("test", test);
+
 
 const selectOperator = function (selection){
     if (operator == null){
