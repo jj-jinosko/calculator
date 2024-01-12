@@ -45,22 +45,10 @@ const selectNumber = function (number){
     }
 }
 
-// let test = Number("55");
-// console.log("test", test);
-
-
 const selectOperator = function (selection){
-    if (operator == null){
         operator = selection;
-    }
 }
 
-const displaySelected = function (){
-    console.log('displaycalculation');
-    num1Box.textContent = num1;
-    operatorBox.textContent = operator;
-    num2Box.textContent = num2;
-}
 
 // operations (can use reduce on array of operations or switch/case)
 // https://stackoverflow.com/questions/22303738/passing-a-math-operator-as-a-parameter
@@ -91,18 +79,46 @@ const operations = a => str => b => {switch(str) {
   }}
 // ---------------------------------------
 const calculate = function (){
-    if(num1 != null && num2 != null && operator != null){ //also, disable enter button until all values entered
+        console.log("num1", num1);
+        console.log("operator", operator);
+        console.log("num2", num2);
         let result = operations(num1)(operator)(num2);
-        console.log(result);
-        num1 = result; // "store" results by setting num1 to result 
-        operator = null;
-        num2 = null;
+        console.log("result", result);
         return result;
-    }
+
 } 
 
-const displayResult = function (){
-    resultBox.textContent = calculate();
+// const displaySelected = function (){
+//     num1Box.textContent = num1;
+//     operatorBox.textContent = operator;
+//     num2Box.textContent = num2;
+// }
+
+const evaluateEquals = function(){
+    let result = calculate();
+    // if(result){ //won't work for 0
+        console.log("got here");
+        
+        displayResult(result);
+    
+}
+
+const evaluateOther = function(newOperator){
+    selectOperator(newOperator);
+    result = calculate();
+        num1 = result;
+        // operator = operator;
+        num2 = null;
+        // result = result;
+        
+        displayResult(result);
+}
+
+const displayResult = function (result){
+    num1Box.textContent = num1;
+    operatorBox.textContent = operator;
+    num2Box.textContent = num2;
+    resultBox.textContent = result;
 };
 
 const clearSelections = function (){
@@ -114,46 +130,45 @@ const clearSelections = function (){
 // could reconfigure to select number based on textContent of buttons
 // seven.addEventListener("click", function(){ alert("Hello World!"); });
 nine.addEventListener("click", function(){ selectNumber(9); });
-nine.addEventListener("click", displaySelected);
+nine.addEventListener("click", displayResult);
 eight.addEventListener("click", function(){ selectNumber(8); });
-eight.addEventListener("click", displaySelected);
+eight.addEventListener("click", displayResult);
 seven.addEventListener("click", function(){ selectNumber(7); });
-seven.addEventListener("click", displaySelected);
+seven.addEventListener("click", displayResult);
 six.addEventListener("click", function(){ selectNumber(6); });
-six.addEventListener("click", displaySelected);
+six.addEventListener("click", displayResult);
 five.addEventListener("click", function(){ selectNumber(5); });
-five.addEventListener("click", displaySelected);
+five.addEventListener("click", displayResult);
 four.addEventListener("click", function(){ selectNumber(4); });
-four.addEventListener("click", displaySelected);
+four.addEventListener("click", displayResult);
 three.addEventListener("click", function(){ selectNumber(3); });
-three.addEventListener("click", displaySelected);
+three.addEventListener("click", displayResult);
 two.addEventListener("click", function(){ selectNumber(2); });
-two.addEventListener("click", displaySelected);
+two.addEventListener("click", displayResult);
 one.addEventListener("click", function(){ selectNumber(1); });
-one.addEventListener("click", displaySelected);
+one.addEventListener("click", displayResult);
 zero.addEventListener("click", function(){ selectNumber(0); });
-zero.addEventListener("click", displaySelected);
+zero.addEventListener("click", displayResult);
 
 // +, -, *, /
-addBox.addEventListener("click", function (){ selectOperator("+") });
-addBox.addEventListener("click", displaySelected);
-addBox.addEventListener("click", displayResult);
+// addBox.addEventListener("click", function (){ selectOperator("+") });
+addBox.addEventListener("click", function (){ evaluateOther("+") });
 
 subtractBox.addEventListener("click", function (){ selectOperator("-") });
-subtractBox.addEventListener("click", displaySelected);
+subtractBox.addEventListener("click", displayResult);
 subtractBox.addEventListener("click", displayResult);
 
 multiplyBox.addEventListener("click", function (){ selectOperator("*") });
-multiplyBox.addEventListener("click", displaySelected);
+multiplyBox.addEventListener("click", displayResult);
 multiplyBox.addEventListener("click", displayResult);
 
 divideBox.addEventListener("click", function (){ selectOperator("/") });
-divideBox.addEventListener("click", displaySelected);
+divideBox.addEventListener("click", displayResult);
 divideBox.addEventListener("click", displayResult);
 
 // =, clear
-equalsBox.addEventListener("click", displayResult);
+equalsBox.addEventListener("click", evaluateEquals);
 
 clearBox.addEventListener("click", clearSelections);
-clearBox.addEventListener("click", displaySelected);
 clearBox.addEventListener("click", displayResult);
+
