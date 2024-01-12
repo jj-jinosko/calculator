@@ -100,6 +100,12 @@ const displayResult = function (){
     resultBox.textContent = calculate();
 };
 
+const clearSelections = function (){
+    num1 = null;
+    num2 = null;
+    operator = null;
+}
+
 // seven.addEventListener("click", function(){ alert("Hello World!"); });
 nine.addEventListener("click", function(){ selectNumber(9); });
 nine.addEventListener("click", displaySelected);
@@ -133,4 +139,7 @@ divideBox.addEventListener("click", function (){ selectOperator("/") });
 divideBox.addEventListener("click", displaySelected);
 
 // =, clear
-equals.addEventListener("click", displayResult);
+equalsBox.addEventListener("click", displayResult);
+clearBox.addEventListener("click", clearSelections);
+clearBox.addEventListener("click", displaySelected);
+clearBox.addEventListener("click", displayResult);
