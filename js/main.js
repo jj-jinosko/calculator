@@ -100,7 +100,8 @@ const evaluateEquals = function(){
         console.log("got here");
         
         displayResult(result);
-    
+        num1 = result;
+        num2 = null;
 }
 
 const evaluateOther = function(newOperator){
@@ -153,18 +154,9 @@ zero.addEventListener("click", displayResult);
 // +, -, *, /
 // addBox.addEventListener("click", function (){ selectOperator("+") });
 addBox.addEventListener("click", function (){ evaluateOther("+") });
-
-subtractBox.addEventListener("click", function (){ selectOperator("-") });
-subtractBox.addEventListener("click", displayResult);
-subtractBox.addEventListener("click", displayResult);
-
-multiplyBox.addEventListener("click", function (){ selectOperator("*") });
-multiplyBox.addEventListener("click", displayResult);
-multiplyBox.addEventListener("click", displayResult);
-
-divideBox.addEventListener("click", function (){ selectOperator("/") });
-divideBox.addEventListener("click", displayResult);
-divideBox.addEventListener("click", displayResult);
+subtractBox.addEventListener("click", function (){ evaluateOther("-") });
+multiplyBox.addEventListener("click", function (){ evaluateOther("*") });
+divideBox.addEventListener("click", function (){ evaluateOther("/") });
 
 // =, clear
 equalsBox.addEventListener("click", evaluateEquals);
