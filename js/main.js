@@ -47,6 +47,7 @@ const selectNumber = function (number){
 
 const selectOperator = function (selection){
         operator = selection;
+        operatorBox.textContent = operator; //redundant...
 }
 
 
@@ -79,12 +80,13 @@ const operations = a => str => b => {switch(str) {
   }}
 // ---------------------------------------
 const calculate = function (){
-        console.log("num1", num1);
-        console.log("operator", operator);
-        console.log("num2", num2);
-        let result = operations(num1)(operator)(num2);
-        console.log("result", result);
-        return result;
+    console.log("num1", num1);
+    console.log("operator", operator);
+    console.log("num2", num2);
+    let result = operations(num1)(operator)(num2);
+
+    console.log("result", result);
+    return result;
 
 } 
 
@@ -95,24 +97,24 @@ const calculate = function (){
 // }
 
 const evaluateEquals = function(){
-    let result = calculate();
-    // if(result){ //won't work for 0
-        console.log("got here");
-        
+        if(operator != null && num2 != null){
+            let result = calculate();
+            // if(result){ //won't work for 0
+            displayResult(result);
+            num1 = result;
+            num2 = null;
+        }
         displayResult(result);
-        num1 = result;
-        num2 = null;
 }
 
 const evaluateOther = function(newOperator){
-    selectOperator(newOperator);
-    result = calculate();
+    if(num2 != null){
+        result = calculate();
         num1 = result;
-        // operator = operator;
         num2 = null;
-        // result = result;
-        
-        displayResult(result);
+    }
+    displayResult(result);
+    selectOperator(newOperator);
 }
 
 const displayResult = function (result){
