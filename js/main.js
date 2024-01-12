@@ -2,6 +2,7 @@
 let num1 = null;
 let num2 = null;
 let operator = null;
+let result = null;
 
 // assign html components
 const nine = document.getElementById("nine");
@@ -83,7 +84,7 @@ const calculate = function (){
     console.log("num1", num1);
     console.log("operator", operator);
     console.log("num2", num2);
-    let result = operations(num1)(operator)(num2);
+    result = operations(num1)(operator)(num2);
 
     console.log("result", result);
     return result;
@@ -126,8 +127,9 @@ const displayResult = function (result){
 
 const clearSelections = function (){
     num1 = null;
-    num2 = null;
     operator = null;
+    num2 = null;
+    result = null;
 }
 
 // could reconfigure to select number based on textContent of buttons
