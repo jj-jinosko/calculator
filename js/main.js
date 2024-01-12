@@ -5,9 +5,21 @@
 const nine = document.getElementById("nine");
 const eight = document.getElementById("eight");
 const seven = document.getElementById("seven");
+const six = document.getElementById("six");
+const five = document.getElementById("five");
+const four = document.getElementById("four");
+const three = document.getElementById("three");
+const two = document.getElementById("two");
+const one = document.getElementById("one");
+const zero = document.getElementById("zero");
 
+const addBox = document.getElementById("add");
+const subtractBox = document.getElementById("subtract");
+const multiplyBox = document.getElementById("multiply");
+const divideBox = document.getElementById("divide");
+const equalsBox = document.getElementById("equals");
 
-
+const clearBox = document.getElementById("clear");
 // read if these updating parameters should be let or const?
 let num1Box = document.getElementById("num1");
 let num2Box = document.getElementById("num2");
@@ -15,7 +27,7 @@ let operatorBox = document.getElementById("operator");
 let resultBox = document.getElementById("result");
 
 
-let num1 = 2; //use for testing calculate()
+let num1 = null; //use for testing calculate()
 let num2 = null;
 let operator = "-";
 
@@ -83,10 +95,25 @@ const displayResult = function (){
 };
 
 // seven.addEventListener("click", function(){ alert("Hello World!"); });
+nine.addEventListener("click", function(){ buildCalculation(9); });
+nine.addEventListener("click", displayNumbersEntered);
+eight.addEventListener("click", function(){ buildCalculation(8); });
+eight.addEventListener("click", displayNumbersEntered);
 seven.addEventListener("click", function(){ buildCalculation(7); });
 seven.addEventListener("click", displayNumbersEntered);
-
-// seven.addEventListener("click", calculate); //this will move to enter button after tests
-seven.addEventListener("click", displayResult);
+six.addEventListener("click", function(){ buildCalculation(6); });
+six.addEventListener("click", displayNumbersEntered);
+five.addEventListener("click", function(){ buildCalculation(5); });
+five.addEventListener("click", displayNumbersEntered);
+four.addEventListener("click", function(){ buildCalculation(4); });
+four.addEventListener("click", displayNumbersEntered);
+// three.addEventListener("click", function(){ buildCalculation(3); });
+// three.addEventListener("click", displayNumbersEntered);
+two.addEventListener("click", function(){ buildCalculation(2); });
+two.addEventListener("click", displayNumbersEntered);
+one.addEventListener("click", function(){ buildCalculation(1); });
+one.addEventListener("click", displayNumbersEntered);
+zero.addEventListener("click", function(){ buildCalculation(0); });
+zero.addEventListener("click", displayNumbersEntered);
 // =, clear
-
+equals.addEventListener("click", displayResult);
