@@ -29,10 +29,10 @@ let resultBox = document.getElementById("result");
 
 let num1 = null; //use for testing calculate()
 let num2 = null;
-let operator = "-";
+let operator = null;
 
 // assign num1 and num2
-const buildCalculation = function (number){
+const selectNumber = function (number){
     if (num1 == null){
         num1 = number;
     } else if(num2 == null){
@@ -41,7 +41,13 @@ const buildCalculation = function (number){
     }
 }
 
-const displayNumbersEntered = function (){
+const selectOperator = function (selection){
+    if (operator == null){
+        operator = selection;
+    }
+}
+
+const displaySelected = function (){
     console.log('displaycalculation');
     num1Box.textContent = num1;
     operatorBox.textContent = operator;
@@ -95,25 +101,36 @@ const displayResult = function (){
 };
 
 // seven.addEventListener("click", function(){ alert("Hello World!"); });
-nine.addEventListener("click", function(){ buildCalculation(9); });
-nine.addEventListener("click", displayNumbersEntered);
-eight.addEventListener("click", function(){ buildCalculation(8); });
-eight.addEventListener("click", displayNumbersEntered);
-seven.addEventListener("click", function(){ buildCalculation(7); });
-seven.addEventListener("click", displayNumbersEntered);
-six.addEventListener("click", function(){ buildCalculation(6); });
-six.addEventListener("click", displayNumbersEntered);
-five.addEventListener("click", function(){ buildCalculation(5); });
-five.addEventListener("click", displayNumbersEntered);
-four.addEventListener("click", function(){ buildCalculation(4); });
-four.addEventListener("click", displayNumbersEntered);
-// three.addEventListener("click", function(){ buildCalculation(3); });
-// three.addEventListener("click", displayNumbersEntered);
-two.addEventListener("click", function(){ buildCalculation(2); });
-two.addEventListener("click", displayNumbersEntered);
-one.addEventListener("click", function(){ buildCalculation(1); });
-one.addEventListener("click", displayNumbersEntered);
-zero.addEventListener("click", function(){ buildCalculation(0); });
-zero.addEventListener("click", displayNumbersEntered);
+nine.addEventListener("click", function(){ selectNumber(9); });
+nine.addEventListener("click", displaySelected);
+eight.addEventListener("click", function(){ selectNumber(8); });
+eight.addEventListener("click", displaySelected);
+seven.addEventListener("click", function(){ selectNumber(7); });
+seven.addEventListener("click", displaySelected);
+six.addEventListener("click", function(){ selectNumber(6); });
+six.addEventListener("click", displaySelected);
+five.addEventListener("click", function(){ selectNumber(5); });
+five.addEventListener("click", displaySelected);
+four.addEventListener("click", function(){ selectNumber(4); });
+four.addEventListener("click", displaySelected);
+three.addEventListener("click", function(){ selectNumber(3); });
+three.addEventListener("click", displaySelected);
+two.addEventListener("click", function(){ selectNumber(2); });
+two.addEventListener("click", displaySelected);
+one.addEventListener("click", function(){ selectNumber(1); });
+one.addEventListener("click", displaySelected);
+zero.addEventListener("click", function(){ selectNumber(0); });
+zero.addEventListener("click", displaySelected);
+
+// +, -, *, /
+addBox.addEventListener("click", function (){ selectOperator("+") });
+addBox.addEventListener("click", displaySelected);
+subtractBox.addEventListener("click", function (){ selectOperator("-") });
+subtractBox.addEventListener("click", displaySelected);
+multiplyBox.addEventListener("click", function (){ selectOperator("*") });
+multiplyBox.addEventListener("click", displaySelected);
+divideBox.addEventListener("click", function (){ selectOperator("/") });
+divideBox.addEventListener("click", displaySelected);
+
 // =, clear
 equals.addEventListener("click", displayResult);
