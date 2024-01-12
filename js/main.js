@@ -1,4 +1,4 @@
-// constants 0-9 (not sure if this is ncessary?)
+// constants 0-9 (not sure if this is necessary?)
 // const ZERO = 0;
 
 // assign html components
@@ -82,19 +82,16 @@ const operations = a => str => b => {switch(str) {
     default: return 'Invalid operation'
   }}
 // ---------------------------------------
-
 const calculate = function (){
     if(num1 != null && num2 != null && operator != null){ //also, disable enter button until all values entered
         let result = operations(num1)(operator)(num2);
         console.log(result);
+        num1 = result; // "store" results by setting num1 to result 
+        operator = null;
+        num2 = null;
         return result;
     }
-}
-
-// const calculate = function (){
-//     let result = num1 + num2;
-//     return result;
-// };
+} 
 
 const displayResult = function (){
     resultBox.textContent = calculate();
@@ -131,15 +128,23 @@ zero.addEventListener("click", displaySelected);
 // +, -, *, /
 addBox.addEventListener("click", function (){ selectOperator("+") });
 addBox.addEventListener("click", displaySelected);
+addBox.addEventListener("click", displayResult);
+
 subtractBox.addEventListener("click", function (){ selectOperator("-") });
 subtractBox.addEventListener("click", displaySelected);
+subtractBox.addEventListener("click", displayResult);
+
 multiplyBox.addEventListener("click", function (){ selectOperator("*") });
 multiplyBox.addEventListener("click", displaySelected);
+multiplyBox.addEventListener("click", displayResult);
+
 divideBox.addEventListener("click", function (){ selectOperator("/") });
 divideBox.addEventListener("click", displaySelected);
+divideBox.addEventListener("click", displayResult);
 
 // =, clear
 equalsBox.addEventListener("click", displayResult);
+
 clearBox.addEventListener("click", clearSelections);
 clearBox.addEventListener("click", displaySelected);
 clearBox.addEventListener("click", displayResult);
