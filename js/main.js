@@ -32,16 +32,16 @@ let resultBox = document.getElementById("result");
 const selectNumber = function (number){
     if (num1 == null){
         num1 = number;
-    } else if (num1 != null && operator == null){
-        let num1String = num1.toString();
-        console.log("num1toString", num1String);
-        let newNum1String = num1String.concat(number.toString());
-        console.log(newNum1String);
-        num1 = Number(newNum1String);
+    } else if(num1 != null && operator == null){
+        let num1String = num1.toString().concat(number.toString());
+        num1 = Number(num1String);
         console.log("num1", num1);
     } else if(num2 == null){
         num2 = number;
-        // console.log("num2", num2)
+    } else if(num2 != null){
+        let num2String = num2.toString().concat(number.toString());
+        num2 = Number(num2String);
+        console.log("num2", num2);
     }
 }
 
@@ -111,6 +111,7 @@ const clearSelections = function (){
     operator = null;
 }
 
+// could reconfigure to select number based on textContent of buttons
 // seven.addEventListener("click", function(){ alert("Hello World!"); });
 nine.addEventListener("click", function(){ selectNumber(9); });
 nine.addEventListener("click", displaySelected);
