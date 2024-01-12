@@ -24,52 +24,63 @@ const buildCalculation = function (number){
     if (num1 == null){
         num1 = number;
     } else if(num2 == null){
-        num1 = number;
+        num2 = number;
+        // console.log("num2", num2)
     }
 }
 
 // operations (can use reduce on array of operations or switch/case)
 // https://stackoverflow.com/questions/22303738/passing-a-math-operator-as-a-parameter
 //  +, -, x, /
-const operations = { 
-    "+" : (operand1, operand2) => operand1 + operand2,
-    "-" : (operand1, operand2) => operand1 - operand2,
-    "*" : (operand1, operand2) => operand1 * operand2,
-    "/" : (operand1, operand2) => operand1 / operand2,
-};
 
-function accumulate(list, operator) {
-    return list.reduce(operations[operator]);
-}
+// --------------- reduce 
+// const operations = { 
+//     "+" : (operand1, operand2) => operand1 + operand2,
+//     "-" : (operand1, operand2) => operand1 - operand2,
+//     "*" : (operand1, operand2) => operand1 * operand2,
+//     "/" : (operand1, operand2) => operand1 / operand2,
+// };
 
-console.log(accumulate([1, 2, 3, 4], "+")); 
+// function accumulate(list, operator) {
+//     return list.reduce(operations[operator]);
+// }
 
-// ---------------------------------------------
+//console.log(accumulate([1, 2, 3, 4], "+")); 
 
-const calculate = function (){
-    if(num1 != null && num2!= null && operator != null){ //also, disable enter button until all values entered
-        let result = num1; 
-    }
-    return result;
-}
+// -----------------switch--------------------------
+//
+// const operations = a => str => b => {switch(str) {
+//     case "+": return a + b
+//     case "-": return a - b
+//     case "*": return a * b
+//     case "/": return a / b
+//     default: return 'Invalid operation'
+//   }}
+// ---------------------------------------
 
-const displayCalculation = function (){
+// const calculate = function (){
+//     if(num1 != null && num2 != null && operator != null){ //also, disable enter button until all values entered
+//         let result = operations(num1)("+")(num2);
+//         console.log(result);
+//         return result;
+//     }
+// }
+
+
+const displayNumbersEntered = function (){
     console.log('displaycalculation');
     num1Box.textContent = num1;
+    operatorBox.textContent = operator;
+    num2Box.textContent = num2;
 }
 
-// =, clear
+
 
 // seven.addEventListener("click", function(){ alert("Hello World!"); });
 seven.addEventListener("click", function(){ buildCalculation(7); });
-seven.addEventListener("click", displayCalculation);
+seven.addEventListener("click", displayNumbersEntered);
 
+//seven.addEventListener("click", calculate); //this will move to enter button after tests
 
+// =, clear
 
-
-
-
-//function (num1, num2) => num1*num2;
-
-
-// num1, num2, result
