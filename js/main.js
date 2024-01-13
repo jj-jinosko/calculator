@@ -103,19 +103,25 @@ const evaluateEquals = function(){
             // if(result){ //won't work for 0
             displayResult(result);
             num1 = result;
+            operator = null;
             num2 = null;
+        }else{
+            displayResult(result);
         }
-        displayResult(result);
 }
 
 const evaluateOther = function(newOperator){
     if(num2 != null){
         result = calculate();
         num1 = result;
+        operator = null;
         num2 = null;
+        console.log("got this far");
     }
-    displayResult(result);
     selectOperator(newOperator);
+    console.log(num1, operator, num2, result);
+    result = null;
+    displayResult(result);
 }
 
 const displayResult = function (result){
